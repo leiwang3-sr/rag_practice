@@ -97,4 +97,4 @@ print(answer.source_snippet)
 - ChromaDB issues: if you need persistence, use `chromadb.PersistentClient`.
 
 ## License
-MIT (or your preferred license).
+MIT

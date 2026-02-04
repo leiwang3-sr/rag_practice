@@ -33,7 +33,7 @@ rag_dataset = Dataset(
             ),
         ),
     ],
-    # 全局准则
+
     evaluators=[
         LLMJudge(
             rubric="The response must be professional and include a source snippet.",
