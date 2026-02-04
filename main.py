@@ -131,6 +131,15 @@ def setup_agent() -> Agent:
         output_type=AnswerOutput,
     )
 
+async def run_async(question: str) -> AnswerOutput:
+    kb_path = Path(__file__).parent / "docs"
+    collection = init_data(kb_path)
+    search_results = search_collection(collection, question)
+    augmented_prompt_str = augment_prompt(question, search_results)
+    agent = setup_agent()
+    result = await agent.run(augmented_prompt_str)
+    return result.output
+
 def run(question: str) -> AnswerOutput:
     kb_path = Path(__file__).parent / "docs"
     
@@ -146,7 +155,7 @@ def run(question: str) -> AnswerOutput:
     return result.output
 
 def main():
-    question = "What is my age?"
+    question = "What is my plan?"
     try:
         output = run(question)
         print("\n" + "="*30)
